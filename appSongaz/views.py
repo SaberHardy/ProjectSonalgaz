@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 
 # from django.contrib.auth import authenticate, login, logout
 # from django.http import HttpResponseRedirect
@@ -49,8 +49,13 @@ def document(request):
     return render(request, 'pages/document.html', {
         'form': form
     })
-#
-#
+
+
+def delete_file(request, id):
+    file_instance = get_object_or_404(File, id=id)
+    file_instance.delete()
+    return redirect('documents')
+
 # # Login Code 'index'
 #
 #
