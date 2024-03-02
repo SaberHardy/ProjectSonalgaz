@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect
 
-
 # from django.contrib.auth import authenticate, login, logout
 # from django.http import HttpResponseRedirect
 # from django.urls import reverse
@@ -12,7 +11,10 @@ from django.shortcuts import render, redirect
 # from .forms import FileForm
 # from django.contrib.auth import logout
 # from django.views.decorators.cache import never_cache
-#
+from django.core.files.storage import FileSystemStorage
+
+from appSongaz.forms import FileForm
+
 
 def index(request):
     return render(request, 'pages/index.html')
@@ -25,10 +27,23 @@ def dashboard(request):
 #
 def editprofile(request):
     return render(request, 'pages/editprofile.html')
-#
-#
-def document(request):
+
+
+def documents(request):
     return render(request, 'pages/document.html')
+
+
+def document(request):
+    if request.method == 'POST':
+        form = FileForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    else:
+        form = FileForm()
+    return render(request, 'pages/document.html', {
+        'form': form
+    })
 #
 #
 # # Login Code 'index'
