@@ -613,6 +613,48 @@
         .content main .bottom-data .reminders .task-list li:last-child {
             margin-bottom: 0;
         }
+
+        .main-form-file {
+            margin: 100px;
+        }
+
+        .form-btn {
+            margin-top: 50px;
+        }
+
+        .back-home {
+            background: #ff486b;
+            padding: 9px;
+            color: white;
+            border-radius: 5px;
+        }
+
+        .two-btns {
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        input[type="file"]::file-selector-button {
+            border-radius: 4px;
+            padding: 0 16px;
+            height: 40px;
+            cursor: pointer;
+            background-color: white;
+            border: 1px solid rgba(0, 0, 0, 0.16);
+            box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.05);
+            margin-right: 16px;
+            transition: background-color 200ms;
+        }
+
+        /* file upload button hover state */
+        input[type="file"]::file-selector-button:hover {
+            background-color: #f3f4f6;
+        }
+
+        /* file upload button active state */
+        input[type="file"]::file-selector-button:active {
+            background-color: #e5e7eb;
+        }
     </style>
 
     <body>
@@ -659,18 +701,20 @@
             </a>
         </nav>
         <!-- End of Navbar -->
-
-        <div class="mt-5" style="margin: 100px">
+        <div class="mt-5 main-form-file">
             <h1>Upload File</h1>
 
-            <form method="post" enctype="multipart/form-data">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <button class="btn btn-success">Upload</button>
-            </form>
-
-            <p><a href="{% url 'dashboard' %}">Return to home</a></p>
-
+            <div class="form-btn">
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <br>
+                    <div class="two-btns">
+                        <button class="btn btn-success">Upload</button>
+                        <a class="back-home" href="{% url 'dashboard' %}">Return to home</a>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
     <script>

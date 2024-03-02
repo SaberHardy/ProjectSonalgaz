@@ -720,6 +720,7 @@
                 <thead>
                 <tr>
                     <th>File Name</th>
+                    <th>Owner</th>
                     <th>Extension</th>
                     <th>Size</th>
                     <th>Update</th>
@@ -731,6 +732,7 @@
                 {% for file in all_files %}
                     <tr>
                         <td>{{ file.filename }}</td>
+                        <td>{{ file.user.username }}</td>
                         <td>{{ file.file.name|slice:'-4:' }}</td>
                         <td>{{ file.file.size|filesizeformat }}</td>
                         <td>
