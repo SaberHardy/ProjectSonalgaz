@@ -1,6 +1,6 @@
 import mimetypes
 import os
-
+from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.conf import settings
@@ -13,7 +13,13 @@ def index(request):
 
 
 def dashboard(request):
-    return render(request, 'pages/dashboard.html')
+    count_all_files = File.objects.all().count()
+    all_users = User.objects.all()
+    context = {
+        'count_all_files': count_all_files,
+        'all_users': all_users
+    }
+    return render(request, 'pages/dashboard.html', context)
 
 
 #
@@ -21,10 +27,13 @@ def editprofile(request):
     return render(request, 'pages/editprofile.html')
 
 
+
+
+
 def documents(request):
     all_files = File.objects.all()
     context = {
-        'all_files': all_files
+        'all_files': all_files,
     }
     return render(request, 'pages/documents.html', context)
 

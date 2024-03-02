@@ -722,10 +722,13 @@
                     <th>File Name</th>
                     <th>Owner</th>
                     <th>Extension</th>
-                    <th>Size</th>
+                    <th>Uploaded At</th>
+
                     <th>Update</th>
                     <th>Download</th>
                     <th>Delete</th>
+                    <th>Size</th>
+
                 </tr>
                 </thead>
                 <tbody>
@@ -734,7 +737,7 @@
                         <td>{{ file.filename }}</td>
                         <td>{{ file.user.username }}</td>
                         <td>{{ file.file.name|slice:'-4:' }}</td>
-                        <td>{{ file.file.size|filesizeformat }}</td>
+                        <td>{{ file.uploaded_at }}</td>
                         <td>
                             <a href="{% url 'dashboard' %}">
                                 <img src="{% static 'img/edit.png' %}" width="30px">
@@ -750,6 +753,7 @@
                                 <img src="{% static 'img/trash-bin.png' %}" width="30px">
                             </a>
                         </td>
+                        <td>{{ file.file.size|filesizeformat }}</td>
 
                     </tr>
                 {% endfor %}

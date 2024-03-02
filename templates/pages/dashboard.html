@@ -637,7 +637,7 @@
                     <i id="bxs-file-import" class='bx bxs-file-import'></i>
                     <span class="info">
                         <h3>
-                            1,074
+                            {{ count_all_files }}
                         </h3>
                         <p>Arrival Documents</p>
                     </span>
@@ -650,14 +650,6 @@
                         <p>Departure Documents</p>
                     </span>
                 </li>
-                <li><i class='bx bx-show-alt'></i>
-                    <span class="info">
-                        <h3>
-                            3,944
-                        </h3>
-                        <p>Site Visit</p>
-                    </span>
-                </li>
             </ul>
             <!-- End of Documents -->
 
@@ -665,7 +657,7 @@
                 <div class="orders">
                     <div class="header">
                         <i class='bx bx-receipt'></i>
-                        <h3>Recent Orders</h3>
+                        <h3>Recent Users ({{ all_users.count }})</h3>
                         <i class='bx bx-filter'></i>
                     </div>
                     <table>
@@ -673,34 +665,19 @@
                         <tr>
                             <th>User</th>
                             <th>Order Date</th>
-                            <th>Status</th>
+
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>
-                                <img src="{% static 'img/user.jpg' %}">
-                                <p>Khadir Mahdi Marwan</p>
-                            </td>
-                            <td>14-08-2023</td>
-                            <td><span class="status completed">Completed</span></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img src="{% static 'img/user.jpg' %}">
-                                <p>Meraga Fateh</p>
-                            </td>
-                            <td>14-08-2023</td>
-                            <td><span class="status pending">Pending</span></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img src="{% static 'img/user.jpg' %}">
-                                <p>Mohamed</p>
-                            </td>
-                            <td>14-08-2023</td>
-                            <td><span class="status reject">Reject</span></td>
-                        </tr>
+                        {% for user in all_users %}
+                            <tr>
+                                <td>
+                                    <img src="{% static 'img/user.jpg' %}">
+                                    <p>{{ user.username }}</p>
+                                </td>
+                                <td>14-08-2023</td>
+                            </tr>
+                        {% endfor %}
                         </tbody>
                     </table>
                 </div>

@@ -11,4 +11,5 @@ class FileForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         self.fields['file'].widget = forms.ClearableFileInput(
             attrs={'class': 'custom-file-input',
-                   'type': 'file'})
+                   'type': 'file'}
+        )
