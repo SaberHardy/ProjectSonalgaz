@@ -621,13 +621,13 @@
     <body>
     <!-- Sidebar -->
     <div class="sidebar">
-        <a href="#" class="logo">
+        <a href="{% url 'dashboard' %}" class="logo">
             <div class="logo-name"><span>Docs</span>Share</div>
         </a>
         <ul class="side-menu">
             <li><a href="{% url 'dashboard' %}"><i class='bx bxs-dashboard'></i>Dashboard</a></li>
-            <li><a href="{% url 'documents' %}"><i class='bx bx-message-square-dots'></i>Uploaded Documents</a></li>
-            <li><a href="{% url 'document' %}"><i class='bx bx-message-square-dots'></i>Upload Document</a></li>
+            <li><a href="{% url 'documents' %}"><i class='bx bx-message-square-dots'></i>All Documents</a></li>
+            <li><a href="{% url 'document' %}"><i class='bx bx-message-square-dots'></i>Add Document</a></li>
             <li><a href="{% url 'editprofile' %}"><i class='bx bx-cog'></i>Settings</a></li>
         </ul>
         <ul class="side-menu">
