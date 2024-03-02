@@ -10,4 +10,5 @@ urlpatterns = [
     # path('editprofile', views.logout_view, name='editprofile'),
 
     path('delete_file/<int:id>/', views.delete_file, name='delete_file'),
+    path('download_file/<int:pk>/', views.download_file, name='download_file'),
 ]

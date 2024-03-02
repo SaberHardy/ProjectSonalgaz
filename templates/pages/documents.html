@@ -686,7 +686,6 @@
                 </a>
             </li>
         </ul>
-
     </div>
     <!-- End of Sidebar -->
 
@@ -740,9 +739,9 @@
                             </a>
                         </td>
                         <td>
-                            {#                            <a href="{% url 'download' file.id %}">#}
-                            <img src="{% static 'img/download.png' %}" width="30px">
-                            {#                            </a>#}
+                            <a href="{% url 'download_file' file.pk %}">
+                                <img src="{% static 'img/download.png' %}" width="30px">
+                            </a>
                         </td>
                         <td>
                             <a href="{% url 'delete_file' file.id %}">

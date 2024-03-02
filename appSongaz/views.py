@@ -1,18 +1,9 @@
+import mimetypes
+import os
+
+from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
-
-# from django.contrib.auth import authenticate, login, logout
-# from django.http import HttpResponseRedirect
-# from django.urls import reverse
-# from django.http import HttpResponse
-# from django.views.decorators.csrf import csrf_protect
-# import os
-# import time
-# from django.conf import settings
-# from .forms import FileForm
-# from django.contrib.auth import logout
-# from django.views.decorators.cache import never_cache
-from django.core.files.storage import FileSystemStorage
-
+from django.conf import settings
 from appSongaz.forms import FileForm
 from appSongaz.models import File
 
@@ -55,6 +46,20 @@ def delete_file(request, id):
     file_instance = get_object_or_404(File, id=id)
     file_instance.delete()
     return redirect('documents')
+
+
+def download_file(request, pk):
+    file_instance = get_object_or_404(File, pk=pk)
+    file_path = os.path.join(settings.MEDIA_ROOT, str(file_instance.file))
+
+    with open(file_path, 'rb') as file:
+        response = HttpResponse(file.read())
+
+    content_type, encoding = mimetypes.guess_type(file_instance.file.name)
+    response['Content-Type'] = content_type
+    response['Content-Disposition'] = f'attachment; filename="{file_instance.file.name}"'
+
+    return response
 
 # # Login Code 'index'
 #
