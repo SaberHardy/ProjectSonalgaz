@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <img class="wave" src="{% static 'img/wave.png' %}">
+    <div class="container">
+        <div class="img">
+            <img src="{% static 'img/Logo.png' %}">
+        </div>
+        <div class="login-content">
+            <form method="post" action="{% url 'index' %}">
+                {% csrf_token %}
+                <img src="{% static 'img/avatar.svg' %}">
+                <h2 class="title">Welcome</h2>
+                {% if error_message %}
+                    <p style="color: red;">{{ error_message }}</p>
+                {% endif %}
+                <div class="input-div one">
+                    <div class="i">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="div">
+                        <h5>Username</h5>
+                        <input type="text" class="input" name="username" required>
+                    </div>
+                </div>
+                <div class="input-div pass">
+                    <div class="i">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <div class="div">
+                        <h5>Password</h5>
+                        <input type="password" class="input" name="password" required>
+                    </div>
+                </div>
+                <input type="submit" class="btn" value="Login">
+            </form>
+        </div>
+    </div>
+
+{% endblock content %}
+{% block navbar %}
+    <!-- Main Content -->
+    <div class="content">
+        <!-- Navbar -->
+        <nav>
+            <form action="#">
+                <div class="form-input">
+                    <input type="search" placeholder="Search...">
+                    <button class="search-btn" type="submit"><i class='bx bx-search'></i></button>
+                </div>
+            </form>
+            <input type="checkbox" id="theme-toggle" hidden>
+            <label for="theme-toggle" class="theme-toggle"></label>
+            <a href="#" class="notif">
+                <i class='bx bx-bell'></i>
+                <span class="count">12</span>
+            </a>
+            <a href="#" class="profile">
+                <img src="{% static 'img/profile.png' %}">
+            </a>
+        </nav>
+    </div>
+
+    <!-- End of Navbar -->
+{% endblock %}
+
+{% block sidebar %}
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <a href="{% url 'index' %}" class="logo">
+            <div class="logo-name"><span>Docs</span>Share</div>
+        </a>
+        <ul class="side-menu">
+            <li><a href="{% url 'dashboard' %}"><i class='bx bxs-dashboard'></i>Dashboard</a></li>
+            <li><a href="{% url 'document' %}"><i class='bx bx-message-square-dots'></i>Documents</a></li>
+            <li><a href="{% url 'editprofile' %}"><i class='bx bx-cog'></i>Settings</a></li>
+        </ul>
+        <ul class="side-menu">
+            <li>
+                <a href="#" class="logout">
+                    <i class='bx bx-log-out-circle'></i>
+                    Logout
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- End of Sidebar -->
+{% endblock %}
