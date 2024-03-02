@@ -14,6 +14,7 @@ from django.shortcuts import render, redirect
 from django.core.files.storage import FileSystemStorage
 
 from appSongaz.forms import FileForm
+from appSongaz.models import File
 
 
 def index(request):
@@ -30,7 +31,11 @@ def editprofile(request):
 
 
 def documents(request):
-    return render(request, 'pages/document.html')
+    all_files = File.objects.all()
+    context = {
+        'all_files': all_files
+    }
+    return render(request, 'pages/documents.html', context)
 
 
 def document(request):
@@ -38,7 +43,7 @@ def document(request):
         form = FileForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('home')
+            return redirect('documents')
     else:
         form = FileForm()
     return render(request, 'pages/document.html', {

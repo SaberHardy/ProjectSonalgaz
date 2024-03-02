@@ -1,3 +1,5 @@
+import os
+
 from django.db import models
 import uuid
 
@@ -12,3 +14,6 @@ class File(models.Model):
 
     def __str__(self):
         return self.title
+
+    def filename(self):
+        return os.path.basename(self.file.name)
