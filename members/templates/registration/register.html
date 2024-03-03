@@ -21,51 +21,35 @@
             <img src="{% static 'img/avatar.svg' %}">
             <h2 class="title">Welcome</h2>
 
-            {% if error_message %}
-                <p style="color: red;">{{ error_message }}</p>
+            {% if form.non_field_errors %}
+                <p style="color: red;">{{ form.non_field_errors }}</p>
             {% endif %}
 
-            <div class="input-div one">
-                <div class="i">
-                    <i class="fas fa-user"></i>
+            {% for field in form %}
+                <div class="input-div one">
+                    <div class="i">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="div">
+                        {{ field }}
+                    </div>
                 </div>
-                <div class="div">
-                    <input placeholder="Full name" type="text" class="input" name="fullname" required>
-                </div>
-            </div>
-            <div class="input-div one">
-                <div class="i">
-                    <i class="fas fa-user"></i>
-                </div>
-                <div class="div">
-                    <input placeholder="Your Email" type="email" class="input" name="email" required>
-                </div>
-            </div>
+                {% if field.errors %}
+                    {% for error in field.errors %}
+                        <p style="color: red;">{{ error }}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endfor %}
 
-            <div class="input-div pass">
-                <div class="i">
-                    <i class="fas fa-lock"></i>
-                </div>
-                <div class="div">
-                    <input placeholder="Password" type="password" class="input" name="password1" required>
-                </div>
-            </div>
-
-            <div class="input-div pass">
-                <div class="i">
-                    <i class="fas fa-lock"></i>
-                </div>
-                <div class="div">
-                    <input placeholder="Repeat Password" type="password" class="input" name="password2" required>
-                </div>
-            </div>
             <input type="submit" class="btn" value="Register">
+
             <div class="p-button">
                 <p>You already have an account ?</p>
                 <a href="{% url 'login' %}">Login</a>
             </div>
         </form>
     </div>
+
 </div>
 
 </body>
