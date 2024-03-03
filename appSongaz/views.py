@@ -4,6 +4,9 @@ from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.conf import settings
+from django.urls import reverse
+from django.views.generic import UpdateView
+
 from appSongaz.forms import FileForm
 from appSongaz.models import File
 
@@ -70,3 +73,13 @@ def download_file(request, pk):
     response['Content-Disposition'] = f'attachment; filename="{file_instance.file.name}"'
 
     return response
+
+
+class UpdateFileView(UpdateView):
+    model = File
+    form_class = FileForm
+    template_name = 'pages/update_file.html'
+
+    def get_success_url(self):
+        return reverse('documents')
+

@@ -63,7 +63,7 @@
                         <td>{{ file.file.name|slice:'-4:' }}</td>
                         <td>{{ file.uploaded_at }}</td>
                         <td>
-                            <a href="{% url 'dashboard' %}">
+                            <a href="{% url 'update' file.id %}">
                                 <img src="{% static 'img/edit.png' %}" width="30px">
                             </a>
                         </td>
