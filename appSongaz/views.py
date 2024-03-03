@@ -46,7 +46,9 @@ def document(request):
     if request.method == 'POST':
         form = FileForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            file_instance = form.save(commit=False)
+            file_instance.user = request.user
+            file_instance.save()
             return redirect('documents')
     else:
         form = FileForm()

@@ -10,7 +10,7 @@ class File(models.Model):
     file = models.FileField(upload_to='files/')
     uploaded_at = models.DateTimeField(auto_now=True)
     # Link the file with the user
-    user = models.ForeignKey(User, related_name="files", default=1, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, related_name="files", on_delete=models.CASCADE)
 
     def __str__(self):
         return os.path.basename(self.file.name)
