@@ -20,29 +20,59 @@
             {% csrf_token %}
             <img src="{% static 'img/avatar.svg' %}">
             <h2 class="title">Welcome</h2>
+
             {% if error_message %}
                 <p style="color: red;">{{ error_message }}</p>
             {% endif %}
+
             <div class="input-div one">
                 <div class="i">
                     <i class="fas fa-user"></i>
                 </div>
                 <div class="div">
-                    <input placeholder="User name" type="text" class="input" name="username" required>
+                    <input placeholder="Full name" type="text" class="input" name="fullname" required>
                 </div>
             </div>
+            <div class="input-div one">
+                <div class="i">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="div">
+                    <input placeholder="Your Email" type="email" class="input" name="email" required>
+                </div>
+            </div>
+
+{#            <div class="input-div one">#}
+{#                <div class="i">#}
+{#                    <i class="fas fa-user"></i>#}
+{#                </div>#}
+{#                <div class="div">#}
+{#                    <h5>Username</h5>#}
+{#                    <input type="text" class="input" name="username" required>#}
+{#                </div>#}
+{#            </div>#}
+
             <div class="input-div pass">
                 <div class="i">
                     <i class="fas fa-lock"></i>
                 </div>
                 <div class="div">
-                    <input placeholder="Password" type="password" class="input" name="password" required>
+                    <input placeholder="Password" type="password" class="input" name="password1" required>
                 </div>
             </div>
-            <input type="submit" class="btn" value="Login">
+
+            <div class="input-div pass">
+                <div class="i">
+                    <i class="fas fa-lock"></i>
+                </div>
+                <div class="div">
+                    <input placeholder="Repeat Password" type="password" class="input" name="password2" required>
+                </div>
+            </div>
+            <input type="submit" class="btn" value="Register">
             <div class="p-button">
-                <p>You don't have an account ?</p>
-                <a href="{% url 'register' %}">Register</a>
+                <p>You already have an account ?</p>
+                <a href="{% url 'index' %}">Login</a>
             </div>
         </form>
     </div>

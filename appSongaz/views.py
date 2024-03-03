@@ -12,6 +12,10 @@ def index(request):
     return render(request, 'pages/index.html')
 
 
+def register(request):
+    return render(request, 'pages/register.html')
+
+
 def dashboard(request):
     count_all_files = File.objects.all().count()
     all_users = User.objects.all()
@@ -25,9 +29,6 @@ def dashboard(request):
 #
 def editprofile(request):
     return render(request, 'pages/editprofile.html')
-
-
-
 
 
 def documents(request):
