@@ -16,7 +16,7 @@
         <img src="{% static 'img/Logo.png' %}">
     </div>
     <div class="login-content">
-        <form method="post" action="{% url 'index' %}">
+        <form method="post">
             {% csrf_token %}
             <img src="{% static 'img/avatar.svg' %}">
             <h2 class="title">Welcome</h2>
@@ -42,16 +42,6 @@
                 </div>
             </div>
 
-{#            <div class="input-div one">#}
-{#                <div class="i">#}
-{#                    <i class="fas fa-user"></i>#}
-{#                </div>#}
-{#                <div class="div">#}
-{#                    <h5>Username</h5>#}
-{#                    <input type="text" class="input" name="username" required>#}
-{#                </div>#}
-{#            </div>#}
-
             <div class="input-div pass">
                 <div class="i">
                     <i class="fas fa-lock"></i>
@@ -72,7 +62,7 @@
             <input type="submit" class="btn" value="Register">
             <div class="p-button">
                 <p>You already have an account ?</p>
-                <a href="{% url 'index' %}">Login</a>
+                <a href="{% url 'login' %}">Login</a>
             </div>
         </form>
     </div>

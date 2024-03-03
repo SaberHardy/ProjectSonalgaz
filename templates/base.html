@@ -22,12 +22,14 @@
         <li><a href="{% url 'editprofile' %}"><i class='bx bx-cog'></i>Settings</a></li>
     </ul>
     <ul class="side-menu">
+        {% if user.is_authenticated %}
         <li>
-            <a href="{% url 'index' %}" class="logout">
+            <a href="{% url 'logout' %}" class="logout">
                 <i class='bx bx-log-out-circle'></i>
                 Logout
             </a>
         </li>
+        {% endif %}
     </ul>
 </div>
 <!-- End of Sidebar -->

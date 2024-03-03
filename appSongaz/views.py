@@ -8,12 +8,12 @@ from appSongaz.forms import FileForm
 from appSongaz.models import File
 
 
-def index(request):
-    return render(request, 'pages/index.html')
+def login(request):
+    return render(request, 'registration/login.html')
 
 
 def register(request):
-    return render(request, 'pages/register.html')
+    return render(request, 'registration/register.html')
 
 
 def dashboard(request):
@@ -86,9 +86,9 @@ def download_file(request, pk):
 #             return redirect('dashboard')
 #         else:
 #             error_message = "Invalid username or password"
-#             return render(request, 'pages/index.html', {'error_message': error_message})
+#             return render(request, 'pages/login.html', {'error_message': error_message})
 #
-#     return render(request, 'pages/index.html')
+#     return render(request, 'pages/login.html')
 #
 #
 # def document(request):

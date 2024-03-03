@@ -16,7 +16,7 @@
         <img src="{% static 'img/Logo.png' %}">
     </div>
     <div class="login-content">
-        <form method="post" action="{% url 'index' %}">
+        <form method="post" action="{% url 'login' %}">
             {% csrf_token %}
             <img src="{% static 'img/avatar.svg' %}">
             <h2 class="title">Welcome</h2>
