@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     'appSongaz.apps.AppsongazConfig',
+    'members.apps.MembersConfig',
 ]
 
 MIDDLEWARE = [
