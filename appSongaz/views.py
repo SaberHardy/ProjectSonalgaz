@@ -29,10 +29,6 @@ def register(request):
 #     return render(request, 'appsongaz/index.html', context)
 
 
-#
-def editprofile(request):
-    return render(request, 'pages/editprofile.html')
-
 
 def all_files(request):
     files = File.objects.all()
@@ -82,7 +78,7 @@ def download_file(request, pk):
 class UpdateFileView(UpdateView):
     model = File
     form_class = FileForm
-    template_name = 'pages/update_file.html'
+    template_name = 'appsongaz/upload_file.html'
 
     def get_success_url(self):
-        return reverse('documents')
+        return reverse('all_files')

@@ -51,6 +51,7 @@
     .sidebar-brand p span {
         color: #2eb85c;
     }
+
     .card {
         border-radius: 20px;
     }
@@ -90,18 +91,19 @@
                 <img src="{% static 'appsongaz/gratisography-reindeer-dog-1170x780.jpg' %}">
             </a>
             <ul class="header-nav d-none d-md-flex">
-                <li class="nav-item"><a class="nav-link" href="#">Dashboard</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Users</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Settings </a></li>
+                <li class="nav-item">
+                    <h3><a class="nav-link" href="#">{{ user.username|title }}</a></h3>
+                </li>
             </ul>
             <ul class="header-nav ms-3">
                 <li class="nav-item dropdown">
                     <a class="nav-link py-0" data-coreui-toggle="dropdown" href="#"
-                                                 role="button" aria-haspopup="true" aria-expanded="false">
-                    <div class="avatar avatar-md">
-                        <img class="avatar-img" src="{% static 'appsongaz/gratisography-reindeer-dog-1170x780.jpg' %}"
-                             alt="..."></div>
-                </a>
+                       role="button" aria-haspopup="true" aria-expanded="false">
+                        <div class="avatar avatar-md">
+                            <img class="avatar-img"
+                                 src="{% static 'appsongaz/gratisography-reindeer-dog-1170x780.jpg' %}"
+                                 alt="..."></div>
+                    </a>
                     <div class="dropdown-menu dropdown-menu-end pt-0">
 
 
@@ -119,7 +121,7 @@
                         </a>
                         <div class="dropdown-divider"></div>
                         {% if user.is_authenticated %}
-                            <a class="dropdown-item " href="#">
+                            <a class="dropdown-item " href="{% url 'logout' %}">
                                 <i class="bi bi-box-arrow-left text-danger mx-3"></i>
                                 Logout
                             </a>
@@ -137,8 +139,8 @@
 
     <footer class="footer text-center">
         <div class="">
-                Copyrights Mahdi
-           © 2024
+            Copyrights Mahdi
+            © 2024
         </div>
     </footer>
 </div>
