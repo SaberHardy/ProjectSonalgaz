@@ -1,5 +1,7 @@
 import mimetypes
 import os
+
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
@@ -28,7 +30,7 @@ def register(request):
 #     }
 #     return render(request, 'appsongaz/index.html', context)
 
-
+@login_required
 def all_files(request):
     files = File.objects.all()
     all_users = User.objects.all()
@@ -39,6 +41,7 @@ def all_files(request):
     return render(request, 'appsongaz/index.html', context)
 
 
+@login_required
 def upload_file(request):
     if request.method == 'POST':
         form = FileForm(request.POST, request.FILES)
@@ -54,12 +57,14 @@ def upload_file(request):
     })
 
 
+@login_required
 def delete_file(request, id):
     file_instance = get_object_or_404(File, id=id)
     file_instance.delete()
     return redirect('all_files')
 
 
+@login_required
 def download_file(request, pk):
     file_instance = get_object_or_404(File, pk=pk)
     file_path = os.path.join(settings.MEDIA_ROOT, str(file_instance.file))
@@ -77,7 +82,7 @@ def download_file(request, pk):
 class UpdateFileView(UpdateView):
     model = File
     form_class = FileForm
-    template_name = 'appsongaz/upload_file.html'
+    template_name = 'appsongaz/update_file.html'
 
     def get_success_url(self):
         return reverse('all_files')
