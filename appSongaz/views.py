@@ -29,7 +29,6 @@ def register(request):
 #     return render(request, 'appsongaz/index.html', context)
 
 
-
 def all_files(request):
     files = File.objects.all()
     all_users = User.objects.all()

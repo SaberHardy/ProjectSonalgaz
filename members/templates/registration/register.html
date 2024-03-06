@@ -10,15 +10,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-<img class="wave" src="{% static 'img/wave.png' %}">
 <div class="container">
     <div class="img">
-        <img src="{% static 'img/Logo.png' %}">
+        <img src="{% static 'appsongaz/img/register.avif' %}">
     </div>
     <div class="login-content">
         <form method="post">
             {% csrf_token %}
-            <img src="{% static 'img/avatar.svg' %}">
+            <img src="{% static 'appsongaz/img/profile.png' %}">
             <h2 class="title">Welcome</h2>
 
             {% if form.non_field_errors %}
