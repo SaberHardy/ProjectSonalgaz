@@ -1,8 +1,6 @@
-import os
-
 from django.contrib.auth.models import User
 from django.db import models
-import uuid
+import os
 
 
 class File(models.Model):

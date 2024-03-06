@@ -19,14 +19,14 @@ def register(request):
     return render(request, 'registration/register.html')
 
 
-def dashboard(request):
-    count_all_files = File.objects.all().count()
-    all_users = User.objects.all()
-    context = {
-        'count_all_files': count_all_files,
-        'all_users': all_users
-    }
-    return render(request, 'pages/dashboard.html', context)
+# def dashboard(request):
+#     count_all_files = File.objects.all().count()
+#     all_users = User.objects.all()
+#     context = {
+#         'count_all_files': count_all_files,
+#         'all_users': all_users
+#     }
+#     return render(request, 'appsongaz/index.html', context)
 
 
 #
@@ -34,25 +34,27 @@ def editprofile(request):
     return render(request, 'pages/editprofile.html')
 
 
-def documents(request):
-    all_files = File.objects.all()
+def all_files(request):
+    files = File.objects.all()
+    all_users = User.objects.all()
     context = {
-        'all_files': all_files,
+        'all_files': files,
+        'all_users': all_users,
     }
-    return render(request, 'pages/documents.html', context)
+    return render(request, 'appsongaz/index.html', context)
 
 
-def document(request):
+def upload_file(request):
     if request.method == 'POST':
         form = FileForm(request.POST, request.FILES)
         if form.is_valid():
             file_instance = form.save(commit=False)
             file_instance.user = request.user
             file_instance.save()
-            return redirect('documents')
+            return redirect('all_files')
     else:
         form = FileForm()
-    return render(request, 'pages/document.html', {
+    return render(request, 'appsongaz/upload_file.html', {
         'form': form
     })
 
@@ -60,7 +62,7 @@ def document(request):
 def delete_file(request, id):
     file_instance = get_object_or_404(File, id=id)
     file_instance.delete()
-    return redirect('documents')
+    return redirect('all_files')
 
 
 def download_file(request, pk):
@@ -84,4 +86,3 @@ class UpdateFileView(UpdateView):
 
     def get_success_url(self):
         return reverse('documents')
-
