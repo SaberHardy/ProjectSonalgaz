@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
           rel="stylesheet">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel='stylesheet'>
@@ -40,8 +40,8 @@
             </div>
             <input type="submit" class="btn" value="Login">
             <div class="p-button">
-                <p>You don't have an account ?</p>
-                <a href="{% url 'register' %}">Register</a>
+                <p style="display: inline;">You don't have an account ?</p>
+                <a href="{% url 'register' %}"  style="display: inline; color: #2eb85c; font-weight: bolder">Register</a>
             </div>
         </form>
     </div>
